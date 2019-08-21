@@ -1,0 +1,388 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="midi_synth" target="8" version="2">
+  <project Name="midi_synth">
+    <configuration
+      Name="Common"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M7"
+      arm_endian="Little"
+      arm_fp_abi="Hard"
+      arm_fpu_type="FPv5-D16"
+      arm_linker_heap_size="8192"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="1024"
+      arm_linker_variant="SEGGER"
+      arm_simulator_memory_simulation_parameter="RX 08000000,00200000,FFFFFFFF;RWX 20010000,0003c000,CDCDCDCD"
+      arm_target_device_name="STM32F767ZI"
+      arm_target_interface_type="SWD"
+      c_enforce_ansi_checking="Yes"
+      c_preprocessor_definitions="STM32F767xx;USE_FULL_LL_DRIVER;VECTORS_IN_RAM"
+      c_user_include_directories=".;$(ProjectDir)/RTTFiles;$(ProjectDir)/SystemFiles;$(ProjectDir)/SourceFiles;$(ProjectDir)/SourceFiles/sound/midi;$(ProjectDir)/SourceFiles/sound/app/single_ymf825;$(ProjectDir)/SourceFiles/sound/components/ymf825;$(ProjectDir)/SourceFiles/console;$(ProjectDir)/SourceFiles/usbd;$(ProjectDir)/SourceFiles/usbd/Class/MIDI_CDC/Inc;$(ProjectDir)/CMSIS/Include;$(ProjectDir)/CMSIS/Device/ST/STM32F7xx/Include;$(ProjectDir)/STM32F7xx_HAL_Driver/Inc;$(ProjectDir)/STM32_USB_Device_Library/Core/Inc"
+      debug_initial_breakpoint="Reset_Handler"
+      debug_register_definition_file="$(ProjectDir)/SystemFiles/STM32F7x7_v1r2_Registers.xml"
+      debug_startup_completion_point="Reset_Handler"
+      debug_target_connection="J-Link"
+      gcc_enable_all_warnings="Yes"
+      gcc_entry_point="Reset_Handler"
+      gcc_short_enum="Int Size"
+      link_linker_script_file="$(ProjectDir)/SystemFiles/SEGGER_Flash.icf"
+      linker_memory_map_file="$(ProjectDir)/SystemFiles/STM32F767ZI_MemoryMap.xml"
+      linker_output_format="hex"
+      linker_printf_fp_enabled="Double"
+      linker_printf_width_precision_supported="Yes"
+      linker_section_placements_segments="FLASH RX 0x08000000 0x00200000;RAM RWX 0x20010000 0x0003c000"
+      project_directory=""
+      project_inhibit_indexing="No"
+      project_type="Executable" />
+    <folder Name="RTTFiles">
+      <file file_name="RTTFiles/SEGGER_RTT.c" />
+      <file file_name="RTTFiles/SEGGER_RTT.h" />
+      <file file_name="RTTFiles/SEGGER_RTT_Conf.h" />
+      <file file_name="RTTFiles/SEGGER_RTT_Syscalls_SES.c" />
+    </folder>
+    <configuration
+      Name="Debug"
+      arm_linker_variant="SEGGER"
+      c_preprocessor_definitions="DEBUG_USB_MIDI"
+      debug_initial_breakpoint="Reset_Handler"
+      debug_register_definition_file="$(ProjectDir)/SystemFiles/STM32F7x7_v1r2_Registers.xml"
+      debug_startup_completion_point="Reset_Handler"
+      gcc_entry_point="Reset_Handler"
+      link_use_linker_script_file="No"
+      linker_printf_fmt_level="long long"
+      linker_printf_width_precision_supported="Yes"
+      linker_section_placement_file="SystemFiles/flash_placement.xml" />
+    <folder Name="CMSIS">
+      <folder Name="Device">
+        <folder Name="ST">
+          <folder Name="STM32F7xx">
+            <folder Name="Include">
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f723xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f730xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f732xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f733xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f745xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f746xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f750xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f756xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f765xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f767xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f769xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f777xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f779xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h" />
+              <file file_name="CMSIS/Device/ST/STM32F7xx/Include/system_stm32f7xx.h" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="Include">
+        <file file_name="CMSIS/Include/arm_common_tables.h" />
+        <file file_name="CMSIS/Include/arm_const_structs.h" />
+        <file file_name="CMSIS/Include/arm_math.h" />
+        <file file_name="CMSIS/Include/cmsis_armcc.h" />
+        <file file_name="CMSIS/Include/cmsis_armcc_V6.h" />
+        <file file_name="CMSIS/Include/cmsis_gcc.h" />
+        <file file_name="CMSIS/Include/core_cm0.h" />
+        <file file_name="CMSIS/Include/core_cm0plus.h" />
+        <file file_name="CMSIS/Include/core_cm3.h" />
+        <file file_name="CMSIS/Include/core_cm4.h" />
+        <file file_name="CMSIS/Include/core_cm7.h" />
+        <file file_name="CMSIS/Include/core_cmFunc.h" />
+        <file file_name="CMSIS/Include/core_cmInstr.h" />
+        <file file_name="CMSIS/Include/core_cmSimd.h" />
+        <file file_name="CMSIS/Include/core_sc000.h" />
+        <file file_name="CMSIS/Include/core_sc300.h" />
+      </folder>
+    </folder>
+    <folder Name="STM32F7xx_HAL_Driver">
+      <folder Name="Inc">
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32_assert_template.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_adc_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_can.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cec.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_conf_template.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cortex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_crc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_crc_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cryp.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cryp_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dac.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dac_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dcmi.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dcmi_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_def.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dfsdm.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma2d.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dsi.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_eth.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_flash.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_flash_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_gpio.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_gpio_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_hash.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_hash_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_hcd.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_i2c.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_i2c_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_i2s.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_irda.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_irda_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_iwdg.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_jpeg.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_lptim.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_ltdc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_ltdc_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_mdios.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_mmc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_nand.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_nor.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_qspi.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rng.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rtc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rtc_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_sai.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_sai_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_sd.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_sdram.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_smartcard.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_smartcard_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_smbus.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spdifrx.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_sram.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_usart.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_usart_ex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_wwdg.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_adc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_bus.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_cortex.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_crc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_dac.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_dma.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_dma2d.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_exti.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_fmc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_gpio.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_i2c.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_iwdg.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_lptim.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_pwr.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_rcc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_rng.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_rtc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_sdmmc.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_spi.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_system.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_tim.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usart.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_utils.h" />
+        <file file_name="STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_wwdg.h" />
+      </folder>
+      <folder Name="Src">
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_can.c">
+          <configuration Name="Common" build_exclude_from_build="Yes" />
+        </file>
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cec.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_crc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_crc_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cryp.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cryp_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dac.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dac_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dcmi.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dcmi_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dfsdm.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma2d.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dsi.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_eth.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_hash.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_hash_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_hcd.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2s.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_irda.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_iwdg.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_jpeg.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_lptim.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_mdios.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_mmc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_msp_template.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_nand.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_nor.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pcd_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_qspi.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rng.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rtc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rtc_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sai.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sai_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sd.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sdram.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_smartcard.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_smartcard_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_smbus.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spdifrx.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sram.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_usart.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_wwdg.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_adc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_crc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_dac.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_dma.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_dma2d.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_exti.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_fmc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_gpio.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_i2c.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_lptim.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_pwr.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_rcc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_rng.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_rtc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_sdmmc.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_spi.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_tim.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usart.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_usb.c" />
+        <file file_name="STM32F7xx_HAL_Driver/Src/stm32f7xx_ll_utils.c" />
+      </folder>
+      <configuration
+        Name="Common"
+        c_enforce_ansi_checking="Yes"
+        c_only_additional_options="-Wno-unused-parameter"
+        default_code_section=".fast" />
+    </folder>
+    <folder Name="STM32_USB_Device_Library">
+      <file file_name="STM32_USB_Device_Library/Release_Notes.html" />
+      <folder Name="Core">
+        <folder Name="Inc">
+          <file file_name="STM32_USB_Device_Library/Core/Inc/usbd_core.h" />
+          <file file_name="STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h" />
+          <file file_name="STM32_USB_Device_Library/Core/Inc/usbd_def.h" />
+          <file file_name="STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h" />
+        </folder>
+        <folder Name="Src">
+          <file file_name="STM32_USB_Device_Library/Core/Src/usbd_core.c" />
+          <file file_name="STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c" />
+          <file file_name="STM32_USB_Device_Library/Core/Src/usbd_ioreq.c" />
+        </folder>
+      </folder>
+      <configuration
+        Name="Common"
+        c_enforce_ansi_checking="Yes"
+        c_only_additional_options="-Wno-unused-parameter"
+        default_code_section=".fast" />
+      <configuration Name="Debug" c_enforce_ansi_checking="No" />
+    </folder>
+    <configuration
+      Name="Release"
+      debug_initial_breakpoint="Reset_Handler"
+      debug_startup_completion_point="Reset_Handler" />
+    <folder Name="SystemFiles">
+      <file file_name="SystemFiles/SEGGER_Flash.icf" />
+      <file file_name="SystemFiles/SEGGER_HardFaultHandler.c" />
+      <file file_name="SystemFiles/SEGGER_THUMB_Startup.s" />
+      <file file_name="SystemFiles/STM32F767ZI_MemoryMap.xml" />
+      <file file_name="SystemFiles/STM32F7x7_v1r2_Registers.xml" />
+      <file file_name="SystemFiles/STM32F7x7_v1r2_Vectors.s" />
+      <file file_name="SystemFiles/STM32F7xx_Startup.s" />
+    </folder>
+    <folder Name="SourceFiles">
+      <file file_name="SourceFiles/main.c" />
+      <file file_name="SourceFiles/main.h" />
+      <file file_name="SourceFiles/mididevice.c" />
+      <file file_name="SourceFiles/mididevice.h" />
+      <file file_name="SourceFiles/stm32f7xx_hal_conf.h" />
+      <file file_name="SourceFiles/stm32f7xx_hal_msp.c" />
+      <file file_name="SourceFiles/stm32f7xx_it.c" />
+      <file file_name="SourceFiles/stm32f7xx_it.h" />
+      <file file_name="SourceFiles/system_stm32f7xx.c" />
+      <folder Name="console">
+        <file file_name="SourceFiles/console/cmdif.c" />
+        <file file_name="SourceFiles/console/cmdif.h" />
+      </folder>
+      <folder Name="sound">
+        <folder Name="app">
+          <folder
+            Name="single_ymf825"
+            path="SourceFiles/sound/app/single_ymf825" />
+        </folder>
+        <folder Name="components">
+          <folder Name="ymf825" path="SourceFiles/sound/components/ymf825" />
+        </folder>
+        <folder Name="midi">
+          <file file_name="SourceFiles/sound/midi/midi.c" />
+          <file file_name="SourceFiles/sound/midi/midi.h" />
+          <file file_name="SourceFiles/sound/midi/midiconf.h" />
+        </folder>
+      </folder>
+      <folder Name="usbd">
+        <file file_name="SourceFiles/usbd/usbd_conf.c" />
+        <file file_name="SourceFiles/usbd/usbd_conf.h" />
+        <file file_name="SourceFiles/usbd/usbd_desc.c" />
+        <file file_name="SourceFiles/usbd/usbd_desc.h" />
+        <file file_name="SourceFiles/usbd/usbd_midi_cdc_if.c" />
+        <file file_name="SourceFiles/usbd/usbd_midi_cdc_if.h" />
+        <folder Name="Class">
+          <folder Name="MIDI_CDC">
+            <folder Name="Inc">
+              <file file_name="SourceFiles/usbd/Class/MIDI_CDC/Inc/usbd_midi_cdc.h" />
+            </folder>
+            <folder Name="Src">
+              <file file_name="SourceFiles/usbd/Class/MIDI_CDC/Src/usbd_midi_cdc.c" />
+            </folder>
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+  </project>
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="None"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1" />
+</solution>
