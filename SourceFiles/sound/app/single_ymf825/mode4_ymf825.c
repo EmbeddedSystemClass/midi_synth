@@ -185,8 +185,8 @@ static const MIDI_ToneTable_t _note_tbl[MAX_NOTE_NUM] = {
 static uint8_t _ch_program_tbl[MAX_TONE_NUMBER][NUM_OF_TONE_CFG];
 static uint8_t _tone_noise[NUM_OF_TONE_CFG] ={
   0x01,0x80,
-  0x30,0x7F,0xF1,0x03,0x00,0x20,0x07,
-  0x80,0xAF,0xF1,0x02,0x12,0x10,0x00,
+  0x00,0x0F,0xF0,0x00,0x00,0x10,0x07,
+  0x40,0xDF,0xF0,0x1C,0x00,0x00,0x00,
   0x00,0x2F,0xF3,0x9B,0x00,0x20,0x41,
   0x00,0xAF,0xA0,0x0E,0x10,0x10,0x40,
 };
@@ -281,14 +281,8 @@ static void _ymf825_NoteOn(uint8_t ch, uint8_t kk, uint8_t vv) {
 		YMF825_ChangeVoVol(VoVol);
 		YMF825_ChangeChVol(ChVol);
 
-		if ( ch == 9 ) {
-			fnum = _note_tbl[28].FNUM;
-			block = _note_tbl[28].BLOCK;
-		}
-		else {
-			fnum = _note_tbl[kk & 0x7F].FNUM;
-			block = _note_tbl[kk & 0x7F].BLOCK;
-		}
+		fnum = _note_tbl[kk & 0x7F].FNUM;
+		block = _note_tbl[kk & 0x7F].BLOCK;
 
 		YMF825_SelectNoteNumber(fnum, block);
 		YMF825_KeyOn(tone_num);
@@ -332,13 +326,42 @@ static void _ymf825_ControlChange(uint8_t ch, uint8_t cc, uint8_t vv) {
 
 		case 7:// Channel Volume
 		{
+			float fvelocity = 0.0F;
+			uint8_t ChVol = 0;
+			uint8_t VoVol = 0;
+
 			_play_tuning[ch].ChannelVolume = vv;
+
+			fvelocity  = ((float)(vv & 0x7F))/127.0F;
+			fvelocity *= ((float)(_play_tuning[ch].Expression & 0x7F)) / 127.0F;
+
+			ChVol = (uint8_t)( 31.0F * fvelocity );
+			VoVol = (uint8_t)( 31.0F * (float)(_play_tuning[ch].ChannelVolume & 0x7F) / 127.0F);
+
+			// note on
+			YMF825_SelectChannel(ch);
+			YMF825_ChangeVoVol(VoVol);
+			YMF825_ChangeChVol(ChVol);
 		}
 		break;
 
 		case 11:// Expression
 		{
+			float fvelocity = 0.0F;
+			uint8_t ChVol = 0;
+			uint8_t VoVol = 0;
 			_play_tuning[ch].Expression = vv;
+
+			fvelocity  = ((float)(vv & 0x7F))/127.0F;
+			fvelocity *= ((float)(_play_tuning[ch].Expression & 0x7F)) / 127.0F;
+
+			ChVol = (uint8_t)( 31.0F * fvelocity );
+			VoVol = (uint8_t)( 31.0F * (float)(_play_tuning[ch].ChannelVolume & 0x7F) / 127.0F);
+
+			// note on
+			YMF825_SelectChannel(ch);
+			YMF825_ChangeVoVol(VoVol);
+			YMF825_ChangeChVol(ChVol);
 		}
 		break;
 

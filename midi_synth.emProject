@@ -341,12 +341,17 @@
       </folder>
       <folder Name="sound">
         <folder Name="app">
-          <folder
-            Name="single_ymf825"
-            path="SourceFiles/sound/app/single_ymf825" />
+          <folder Name="single_ymf825">
+            <file file_name="SourceFiles/sound/app/single_ymf825/mode4_ymf825.c" />
+            <file file_name="SourceFiles/sound/app/single_ymf825/mode4_ymf825.h" />
+            <file file_name="SourceFiles/sound/app/single_ymf825/ymf825_tone_table.c" />
+          </folder>
         </folder>
         <folder Name="components">
-          <folder Name="ymf825" path="SourceFiles/sound/components/ymf825" />
+          <folder Name="ymf825">
+            <file file_name="SourceFiles/sound/components/ymf825/ymf825.c" />
+            <file file_name="SourceFiles/sound/components/ymf825/ymf825.h" />
+          </folder>
         </folder>
         <folder Name="midi">
           <file file_name="SourceFiles/sound/midi/midi.c" />
